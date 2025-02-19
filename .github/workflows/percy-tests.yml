@@ -27,4 +27,4 @@ jobs:
       - name: Run Percy Tests
         run: npx percy exec -- cypress run
         env:
-          PERCY_TOKEN: PERCY_TOKEN=web_c88766d688ba70a40a82d2b79d02aca8da22de793f6ef5aea8ca7d9eebe9b6e7
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
