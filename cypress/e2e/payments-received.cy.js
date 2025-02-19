@@ -10,7 +10,7 @@ describe('Test visuales dentro de payments received', () => {
         cy.visit('/api');
         cy.wait(1000);
         cy.get('[data-cy="payments-received-btn"]').click();
-        cy.percySnapshot('Payments Received Table');
+        cy.percySnapshotIfAllowed('Payments Received Table');
     });
 
     //pending filtros para cuando funcionen correctamente
