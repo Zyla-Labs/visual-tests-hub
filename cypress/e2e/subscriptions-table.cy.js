@@ -9,14 +9,14 @@ describe('Test visuales dentro de subscriptions', () => {
 
     it('Debe tomar captura de la talba de subscriptions', () => {
         cy.wait(2000);
-        cy.percySnapshotIfAllowed('Subscriptions Table');
+        cy.percySnapshot('Subscriptions Table');
     });
     it('Debe tomar captura de la tabla filtrada por texto', () => {
         //Steps
         cy.visit('/subscriptions');
         cy.get('[data-cy="Search-api-subscriptions"]').type('Fuel prices in India').type('{Enter}');
         cy.wait(2000);
-        cy.percySnapshotIfAllowed('Subscriptions filtered by text');
+        cy.percySnapshot('Subscriptions filtered by text');
     });
     
     it('Debe tomar captura de la tabla filtrada por active', () => {
@@ -24,7 +24,7 @@ describe('Test visuales dentro de subscriptions', () => {
         cy.visit('/subscriptions');
         cy.get('[data-cy="status-api-subscriptions"]').select('Active').type('{enter}');
         cy.wait(2000);
-        cy.percySnapshotIfAllowed('Active Subsriptions')
+        cy.percySnapshot('Active Subsriptions')
     });
 
     it('Debe filtrar por status Canceled en subscriptions', () => {
@@ -32,7 +32,7 @@ describe('Test visuales dentro de subscriptions', () => {
         cy.visit('/subscriptions');
         cy.get('[data-cy="status-api-subscriptions"]').select('Canceled').type('{enter}');
         cy.wait(2000);
-        cy.percySnapshotIfAllowed('Canceled Subscriptions');
+        cy.percySnapshot('Canceled Subscriptions');
     });
 
     it('Debe tomar captura del no results state', () => {
@@ -40,7 +40,7 @@ describe('Test visuales dentro de subscriptions', () => {
         cy.visit('/subscriptions');
         cy.get('[data-cy="Search-api-subscriptions"]').type('aca no tiene que haber resultados').type('{Enter}');
         cy.wait(2000);
-        cy.percySnapshotIfAllowed('No results state subscriptions');
+        cy.percySnapshot('No results state subscriptions');
     });
 
 });

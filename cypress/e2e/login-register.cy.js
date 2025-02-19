@@ -14,7 +14,7 @@ describe('Testing visual del register, login y home page', () => {
     cy.wait(2000)
     cy.login('agustind@zylalabs.com', Cypress.env('loginPass'));
     cy.visit('api-marketplace');
-    cy.percySnapshotIfAllowed('Marketplace');
+    cy.percySnapshot('Marketplace');
   });
 
   it('Captura la página de un item del marketplace', () => {
@@ -22,29 +22,29 @@ describe('Testing visual del register, login y home page', () => {
     cy.wait(2000)
     cy.visit('/api-marketplace/data/site+traffic+api/29');
     cy.wait(2000);
-    cy.percySnapshotIfAllowed('item-view');
+    cy.percySnapshot('item-view');
     cy.get('[data-cy="pricing"]').click();
-    cy.percySnapshotIfAllowed('Pricing');
+    cy.percySnapshot('Pricing');
     cy.get(':nth-child(4) > #faqs').click();
-    cy.percySnapshotIfAllowed('FAQs');
+    cy.percySnapshot('FAQs');
     cy.get('#info').click();
-    cy.percySnapshotIfAllowed('info');
+    cy.percySnapshot('info');
   });
 
   it('Captura la página del login', () => {
     cy.get('[data-cy="login-header"]').click();
-    cy.percySnapshotIfAllowed('Login')
+    cy.percySnapshot('Login')
   });
 
   it('Captura la página del register', () => {
     cy.get('[data-cy="signup-header"]').click();
-    cy.percySnapshotIfAllowed('Register');
+    cy.percySnapshot('Register');
   });
 
   it('Captura el modal de login', () => {
     cy.visit('/api-marketplace/sports/exercise+database+api/392');
     cy.wait(2000)
-    cy.percySnapshotIfAllowed('Login Modal');
+    cy.percySnapshot('Login Modal');
   });
 
   it('Captura el modal de register', () => {
@@ -53,7 +53,7 @@ describe('Testing visual del register, login y home page', () => {
     cy.get('[data-cy="btn-close-login-modal"]').click();
     cy.get('[data-cy="signup-header"]').click();
     cy.wait(2000)
-    cy.percySnapshotIfAllowed('Register Modal');
+    cy.percySnapshot('Register Modal');
   });
 
 });

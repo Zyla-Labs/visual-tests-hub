@@ -9,12 +9,12 @@ describe('Testing visual de datasets', () => {
 
     it('Debe tomar captura de la home de datasets', () => {
         cy.wait(3000);
-        cy.percySnapshotIfAllowed('Datasets screen');
+        cy.percySnapshot('Datasets screen');
     });
 
     it('Debe tomar captura dela screen de un dataset', () => {
         cy.get(':nth-child(1) > .single_jobs > .jobs_left').click();
         cy.wait(2000);
-        cy.percySnapshotIfAllowed('Dataset Item screen');
+        cy.percySnapshot('Dataset Item screen');
     });
 });

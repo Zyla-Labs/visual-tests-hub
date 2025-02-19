@@ -21,7 +21,7 @@ describe('Testing visual de add a new API', () => {
         cy.get('[data-cy="add-tags"]').type('tagsito').type('{enter}');
         cy.get('[data-cy="url"]').type('https://www.zylalabs.com');
         cy.wait(1000);
-        cy.percySnapshotIfAllowed('Add API completed fields');
+        cy.percySnapshot('Add API completed fields');
     });
 
     it('Debe tomar captura de la screen de endpoints', () => {
@@ -34,7 +34,7 @@ describe('Testing visual de add a new API', () => {
         cy.get('#row_api_4210 > :nth-child(6) > .input-group > .rounded.text-decoration-none').click();
         cy.get('.progressBar > :nth-child(3) > a').click();
         cy.wait(1000);
-        cy.percySnapshotIfAllowed('Plans Screen');
+        cy.percySnapshot('Plans Screen');
     });
 
     it('Debe tomar captura de la screen de edit plan', () => {
@@ -44,7 +44,7 @@ describe('Testing visual de add a new API', () => {
         cy.get('.progressBar > :nth-child(3) > a').click();
         cy.get('#row_api_31468 > [align="left"] > .btn').click();
         cy.wait(1000);
-        cy.percySnapshotIfAllowed('Edit Plan Screen');
+        cy.percySnapshot('Edit Plan Screen');
     });
 
     it('Debe tomar captura de la screen de add plan', () => {
@@ -54,7 +54,7 @@ describe('Testing visual de add a new API', () => {
         cy.get('.progressBar > :nth-child(3) > a').click();
         cy.get('.align-items-center > .btn').click();
         cy.wait(1000);
-        cy.percySnapshotIfAllowed('Add Plan Screen');
+        cy.percySnapshot('Add Plan Screen');
     });
 
     it('Debe tomar captura de la screen de FAQs', () => {
@@ -63,7 +63,7 @@ describe('Testing visual de add a new API', () => {
         cy.get('#row_api_4210 > :nth-child(6) > .input-group > .rounded.text-decoration-none').click();
         cy.get('.progressBar > :nth-child(4) > a').click();
         cy.wait(1000);
-        cy.percySnapshotIfAllowed('FAQs screen');
+        cy.percySnapshot('FAQs screen');
     });
 
     it('Debe tomar captura de la screen de Add FAQ', () => {
@@ -73,7 +73,7 @@ describe('Testing visual de add a new API', () => {
         cy.get('.progressBar > :nth-child(4) > a').click();
         cy.get('[href="https://zylalabs.com/v2/api/faqs/create?api_id=4210"]').click();
         cy.wait(1000);
-        cy.percySnapshotIfAllowed('Add FAQ screen');
+        cy.percySnapshot('Add FAQ screen');
     });
 
     it('Debe tomar captura de la screen de Preview', () => {
@@ -81,7 +81,7 @@ describe('Testing visual de add a new API', () => {
         cy.get('[data-cy="status-api-my-apis"]').select('Live');
         cy.get('#row_api_4210 > :nth-child(6) > .input-group > .rounded.text-decoration-none').click();
         cy.wait(1000);
-        cy.percySnapshotIfAllowed('Preview Screen') 
+        cy.percySnapshot('Preview Screen') 
     });
 
 });

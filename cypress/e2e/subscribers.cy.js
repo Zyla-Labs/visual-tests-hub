@@ -11,7 +11,7 @@ describe('Test visuales dentro de subscribers', () => {
 
     it('Debe tomar captura de la talba de subscribers', () => {
         cy.wait(2000);
-        cy.percySnapshotIfAllowed('Subscribers Table');
+        cy.percySnapshot('Subscribers Table');
     });
 
     it('Debe filtrar por texto en subscribers', () => {
@@ -22,7 +22,7 @@ describe('Test visuales dentro de subscribers', () => {
         cy.wait(3000)
         cy.get('[data-cy="“Filter-api-subscribers”"]').select('Site Traffic API');
         cy.wait(4000);
-        cy.percySnapshotIfAllowed('Subscribers filtered by text');
+        cy.percySnapshot('Subscribers filtered by text');
     });
 
     it('Debe filtrar por status active en subscribers', () => {
@@ -33,7 +33,7 @@ describe('Test visuales dentro de subscribers', () => {
         cy.wait(3000)
         cy.get('[data-cy="status-api-subscribers"]').select('Active');
         cy.wait(2000);
-        cy.percySnapshotIfAllowed('Active Subscribers');
+        cy.percySnapshot('Active Subscribers');
     });
 
     it('Debe filtrar por status canceled en subscribers', () => {
@@ -44,7 +44,7 @@ describe('Test visuales dentro de subscribers', () => {
         cy.wait(4000)
         cy.get('[data-cy="status-api-subscribers"]').select('Canceled');
         cy.wait(5000);
-        cy.percySnapshotIfAllowed('Canceled Subscribers');
+        cy.percySnapshot('Canceled Subscribers');
     });
 
    /* it('Debe tomar captura del no results state', () => {
@@ -55,7 +55,7 @@ describe('Test visuales dentro de subscribers', () => {
         cy.wait(3000)
         cy.get('[data-cy="“Filter-api-subscribers”"]').select('aca no tiene que haber resultados');
         cy.wait(2000);
-        cy.percySnapshotIfAllowed('No results state subscribers');
+        cy.percySnapshot('No results state subscribers');
 
     });*/
 });

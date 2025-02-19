@@ -24,13 +24,13 @@ describe('Testing visual de account', () => {
         //Setps
         cy.get('#delete-account-button').click();
         cy.wait(1000);
-        cy.percySnapshotIfAllowed('Delete Account Modal');
+        cy.percySnapshot('Delete Account Modal');
     });
 
     it('Debe tomar captura de la screen de identity verification', () => {
         cy.get(':nth-child(12) > .nav-link').click();
         cy.wait(1000);
-        cy.percySnapshotIfAllowed('Identity Verification');
+        cy.percySnapshot('Identity Verification');
     });
 
 });
