@@ -6,6 +6,7 @@ module.exports = defineConfig({
     viewportHeight: 900,
     viewportWidth: 1440,
     chromeWebSecurity: false,
+    exit: false,
     env: {
       PERCY_ENABLE: true,
       PERCY_BROWSER_FAMILY: 'chrome',
