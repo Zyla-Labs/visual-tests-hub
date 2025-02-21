@@ -7,6 +7,14 @@ module.exports = defineConfig({
     viewportWidth: 1440,
     chromeWebSecurity: false,
     exit: false,
+    defaultCommandTimeout: 15000,
+    requestTimeout: 15000,
+    responseTimeout: 15000,
+    pageLoadTimeout: 30000,
+    retries: {
+      runMode: 2,
+      openMode: 0
+    },
     env: {
       PERCY_ENABLE: true,
       PERCY_BROWSER_FAMILY: 'chrome',

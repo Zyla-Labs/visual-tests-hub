@@ -5,7 +5,7 @@ describe('Testing visual de account', () => {
         cy.visit('/');
         cy.login('agustind@zylalabs.com', Cypress.env('loginPass'));
         cy.visit('/user-edit-account/51857');
-        cy.wait(2000)
+        cy.wait(4000)
     });
 
     it('Debe tomar captura de la screen de account', () => {
