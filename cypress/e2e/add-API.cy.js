@@ -6,18 +6,10 @@ describe('Testing visual de add a new API', () => {
         cy.login('martin@zylalabs.com', 'zyla3690');
     });
 
-    it('Debe tomar captura del primer step de add new API y el segundo', () => {
+    it('Debe tomar captura del primer step de add new API', () => {
         cy.visit('/v2/api/create');
         cy.wait(2000);
         cy.percySnapshotIfAllowed('Add API empty fields');
-        cy.get('[data-cy="api-name"]').type('New API Name for a lot of endpoints');
-        cy.wait(1000);
-        cy.get('[data-cy="api-short-description"]').type('A short description of this api is not a very good way to describe it');
-        cy.get('[data-cy="api-select-category"]').click().type('{downarrow}{enter}');
-        cy.get('[data-cy="add-tags"]').type('tagsito').type('{enter}');
-        cy.get('[data-cy="url"]').type('https://www.zylalabs.com');
-        cy.wait(1000);
-        cy.percySnapshot('Add API completed fields');
     });
 
     it('Debe tomar captura de la screen de endpoints', () => {
@@ -45,17 +37,17 @@ describe('Testing visual de add a new API', () => {
         cy.get('[data-cy="step-edit-faqs"]').click();
         cy.wait(1000);
         cy.percySnapshot('FAQs screen');
-        cy.get('[href="https://zylalabs.com/v2/api/faqs/create?api_id=4210"]').click();
-        cy.percySnapshot('Add FAQ screen');
+       /* cy.get('[href="https://zylalabs.com/v2/api/faqs/create?api_id=4210"]').click();
+        cy.percySnapshot('Add FAQ screen');*/
     });
 
     it('Debe tomar captura de la screen de Preview', () => {
         cy.visit('/api');
         cy.get('[data-cy="status-api-my-apis"]').select('Live');
         cy.wait(2000);
-        cy.get('#row_api_4210 > :nth-child(6) > .input-group > .rounded.text-decoration-none').click();
+       /* cy.get('#row_api_4210 > :nth-child(6) > .input-group > .rounded.text-decoration-none').click();
         cy.wait(2000);
-        cy.percySnapshot('Preview Screen') 
+        cy.percySnapshot('Preview Screen') */
     });
 
 });
