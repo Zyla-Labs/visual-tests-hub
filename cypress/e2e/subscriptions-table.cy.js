@@ -14,7 +14,7 @@ describe('Test visuales dentro de subscriptions', () => {
     it('Debe tomar captura de la tabla filtrada por texto', () => {
         //Steps
         cy.visit('/subscriptions');
-        cy.get('[data-cy="Search-api-subscriptions"]').type('Fuel prices in India').type('{Enter}');
+        cy.get('[data-cy="Search-api-subscriptions"]').type('Fuel India API').type('{Enter}');
         cy.wait(2000);
         cy.percySnapshot('Subscriptions filtered by text');
     });
