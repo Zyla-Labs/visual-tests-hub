@@ -35,7 +35,7 @@ describe('Testing visual de account', () => {
     it('Debe tomar captura de la screen de Organization', () => {
         cy.wait(2000);
         cy.visit('/user_edit/51857');
-        percySnapshot('Organization Screen');
+        cy.percySnapshot('Organization Screen');
     });
     
 });
