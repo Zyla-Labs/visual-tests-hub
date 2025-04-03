@@ -43,7 +43,7 @@ describe('Test visuales dentro de subscribers', () => {
         cy.get('[data-cy="subscribers-btn"]').click();
         cy.wait(4000)
         cy.get('[data-cy="status-api-subscribers"]').select('Canceled');
-        cy.wait(5000);
+        cy.wait(10000);
         cy.percySnapshot('Canceled Subscribers');
     });
 
