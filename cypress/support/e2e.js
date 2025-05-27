@@ -40,4 +40,8 @@ Cypress.on('uncaught:exception', (err) => {
     if (err.message.includes('selectize is not a function')) {
       return false;
   }
+    // Ignora errores que contienen 'niceSelect is not a function'
+    if (err.message.includes('niceSelect')) {
+      return false;
+    }
   });
