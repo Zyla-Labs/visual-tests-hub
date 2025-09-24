@@ -2,7 +2,7 @@ import '@percy/cypress';
 describe('Test visuales dentro de subscribers', () => {
     beforeEach(() => {
         cy.visit('/');
-        cy.login('martin@zylalabs.com', 'zyla3690');
+        cy.login('martin@zylalabs.com', 'zyla3692');
         cy.visit('/api');
         cy.wait(1000)
         cy.get('[data-cy="subscribers-btn"]').click();

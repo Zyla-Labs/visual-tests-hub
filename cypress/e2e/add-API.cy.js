@@ -3,7 +3,7 @@ describe('Testing visual de add a new API', () => {
     
     beforeEach(() => {
         cy.visit('/');
-        cy.login('martin@zylalabs.com', 'zyla3690');
+        cy.login('martin@zylalabs.com', 'zyla3692');
     });
 
     it('Debe tomar captura del primer step de add new API', () => {

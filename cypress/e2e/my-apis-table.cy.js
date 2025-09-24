@@ -3,7 +3,7 @@ describe('Test visuales dentro de My APIs', () => {
     
     beforeEach(() => {
         cy.visit('/');
-        cy.login('martin@zylalabs.com', 'zyla3690');
+        cy.login('martin@zylalabs.com', 'zyla3692');
         cy.visit('/api');
     });
 
