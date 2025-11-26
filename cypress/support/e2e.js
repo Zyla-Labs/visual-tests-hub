@@ -15,7 +15,26 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import '../support/commands';
 import '@percy/cypress';
+
+Cypress.on('request:before:send', (xhr) => {
+  xhr.requestHeaders['zyla-cypress-test'] = 'true';
+});
+
+// Add header to ALL outgoing browser requests (CSS, JS, images, fonts, XHR, fetch)
+Cypress.on('request:before:send', (req) => {
+  req.requestHeaders['zyla-cypress-test'] = 'true';
+});
+
+// Add header to cy.visit() calls too
+Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {
+  options.headers = {
+    ...(options.headers || {}),
+    'zyla-cypress-test': 'true'
+  };
+  return originalFn(url, options);
+});
 
 Cypress.on('uncaught:exception', (err) => {
     // Ignora errores de AOS
