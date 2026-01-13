@@ -25,6 +25,16 @@ module.exports = defineConfig({
       if (config.browser && config.browser.name !== 'chrome') {
         config.env.PERCY_ENABLE = false;
       }
+
+      // Configuración de headers para todas las requests
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+        if (browser.family === 'chromium' || browser.name === 'chrome') {
+          console.log('Añadiendo bandera --lang=en');
+          launchOptions.args.push('--lang=en');
+        }
+        return launchOptions;
+      });
+
       return config;
     },
   },

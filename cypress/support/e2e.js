@@ -18,22 +18,33 @@ import './commands'
 import '../support/commands';
 import '@percy/cypress';
 
-Cypress.on('request:before:send', (xhr) => {
-  xhr.requestHeaders['zyla-cypress-test'] = 'true';
-});
-
-// Add header to ALL outgoing browser requests (CSS, JS, images, fonts, XHR, fetch)
-Cypress.on('request:before:send', (req) => {
-  req.requestHeaders['zyla-cypress-test'] = 'true';
-});
-
-// Add header to cy.visit() calls too
+// Add header to cy.visit() calls
 Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {
-  options.headers = {
-    ...(options.headers || {}),
-    'zyla-cypress-test': 'true'
-  };
+  // Validar que url existe y es un string
+  if (!url || typeof url !== 'string') {
+    return originalFn(url, options);
+  }
+  
+  // Asegurarse de que options existe y tiene headers
+  if (!options) {
+    options = {};
+  }
+  if (!options.headers) {
+    options.headers = {};
+  }
+  options.headers['zyla-cypress-test'] = 'true';
   return originalFn(url, options);
+});
+
+// Interceptar todas las requests HTTP para agregar headers
+// Se configura en cada suite antes de que se ejecuten los tests
+beforeEach(() => {
+  cy.intercept('**', (req) => {
+    // Asegurarse de que req y req.headers existen antes de modificarlos
+    if (req && req.headers && typeof req.headers === 'object') {
+      req.headers['zyla-cypress-test'] = 'true';
+    }
+  });
 });
 
 Cypress.on('uncaught:exception', (err) => {
