@@ -26,11 +26,28 @@ module.exports = defineConfig({
         config.env.PERCY_ENABLE = false;
       }
 
-      // Configuración de headers para todas las requests
+      // Configuración del navegador para evitar detección de bots por Cloudflare
       on('before:browser:launch', (browser = {}, launchOptions) => {
         if (browser.family === 'chromium' || browser.name === 'chrome') {
-          console.log('Añadiendo bandera --lang=en');
-          launchOptions.args.push('--lang=en');
+          console.log('Configurando navegador para evitar detección de Cloudflare');
+          
+          // Agregar flags para parecer navegador real y evitar detección de automation
+          launchOptions.args.push(
+            '--lang=en-US',
+            '--disable-blink-features=AutomationControlled',
+            '--exclude-switches=enable-automation',
+            '--disable-dev-shm-usage',
+            '--no-sandbox',
+            '--start-maximized'
+          );
+          
+          // Configurar preferencias para parecer navegador real
+          launchOptions.preferences = {
+            ...launchOptions.preferences,
+            'profile.default_content_setting_values.notifications': 2,
+            'profile.default_content_settings.popups': 0,
+            'profile.managed_default_content_settings.images': 1
+          };
         }
         return launchOptions;
       });

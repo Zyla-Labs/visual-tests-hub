@@ -18,7 +18,26 @@ import './commands'
 import '../support/commands';
 import '@percy/cypress';
 
-// Add header to cy.visit() calls
+// Interceptar TODAS las requests (GET, POST, PUT, etc.) para agregar el header requerido por Cloudflare
+// Esto se ejecuta antes de cada test para asegurar que todas las requests tengan el header correcto
+// Incluye recursos estáticos como CSS, JS, imágenes, fuentes, etc.
+beforeEach(() => {
+  // Interceptar todas las requests sin importar el método HTTP o tipo de recurso
+  // Esto captura: HTML, CSS, JS, imágenes, fuentes, XHR, fetch, etc.
+  cy.intercept('**', (req) => {
+    // Asegurarse de que req y req.headers existen antes de modificarlos
+    if (req && req.headers && typeof req.headers === 'object') {
+      // Agregar el header requerido por Cloudflare según políticas de la empresa
+      req.headers['zyla-cypress-test'] = 'true';
+    }
+    // También usar requestHeaders si está disponible (para compatibilidad)
+    if (req && req.requestHeaders && typeof req.requestHeaders === 'object') {
+      req.requestHeaders['zyla-cypress-test'] = 'true';
+    }
+  });
+});
+
+// Add header to cy.visit() calls - esto es importante para la request inicial
 Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {
   // Validar que url existe y es un string
   if (!url || typeof url !== 'string') {
@@ -32,19 +51,11 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {
   if (!options.headers) {
     options.headers = {};
   }
+  
+  // Agregar el header requerido por Cloudflare según políticas de la empresa
   options.headers['zyla-cypress-test'] = 'true';
+  
   return originalFn(url, options);
-});
-
-// Interceptar todas las requests HTTP para agregar headers
-// Se configura en cada suite antes de que se ejecuten los tests
-beforeEach(() => {
-  cy.intercept('**', (req) => {
-    // Asegurarse de que req y req.headers existen antes de modificarlos
-    if (req && req.headers && typeof req.headers === 'object') {
-      req.headers['zyla-cypress-test'] = 'true';
-    }
-  });
 });
 
 Cypress.on('uncaught:exception', (err) => {

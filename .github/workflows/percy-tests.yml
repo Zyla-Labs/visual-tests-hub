@@ -25,6 +25,6 @@ jobs:
         run: echo '${{ secrets.CYPRESS_ENV }}' > cypress.env.json
 
       - name: Run Percy Tests
-        run: npx percy exec -- cypress run --browser chrome
+        run: npx percy exec -- cypress run --browser chrome --headless
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
